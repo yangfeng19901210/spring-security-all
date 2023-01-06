@@ -1,5 +1,6 @@
 package com.yf.springsecurityall.mapper;
 
+import com.yf.springsecurityall.entity.SysPermission;
 import com.yf.springsecurityall.entity.User;
 import org.apache.ibatis.annotations.*;
 
@@ -33,6 +34,8 @@ public interface SysUserMapper {
     User getUserByUsername(@Param("username") String username);
     @Update("update sys_user set last_login_time = #{lastLoginTime} where id = #{id}")
     int updateLastLoginTime(@Param("lastLoginTime")Date lastLoginTime,@Param("id") Integer id);
+
+    List<SysPermission> getPermsByUsername(@Param("username") String username);
 
 
 

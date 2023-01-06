@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SysPermissionMapperTest {
@@ -20,6 +22,11 @@ class SysPermissionMapperTest {
         permission.setUrl("/order/view");
         sysPermissionMapper.insert(permission);
         System.out.println(permission);
+    }
+    @Test
+    public void testGetAllPerms(){
+        List<SysPermission> allPerms = sysPermissionMapper.getAllPerms();
+        System.out.println(allPerms);
     }
 
 }

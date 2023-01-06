@@ -29,6 +29,13 @@ public interface SysPermissionMapper {
      * @return 实例对象
      */
     SysPermission queryById(Integer id);
+    /**
+     * @Author @yangfeng
+     * @Description //查看所有权限
+     * @Date 16:39 2023/1/6
+     * @return java.util.List<com.yf.springsecurityall.entity.SysPermission>
+     **/
+    List<SysPermission> getAllPerms();
 
 
 }

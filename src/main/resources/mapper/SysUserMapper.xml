@@ -15,6 +15,13 @@
         <result property="credentialsNonExpired" column="credentials_non_expired" jdbcType="INTEGER"/>
     </resultMap>
 
+    <resultMap type="com.yf.springsecurityall.entity.SysPermission" id="SysPermissionMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="permName" column="perm_name" jdbcType="VARCHAR"/>
+        <result property="permTag" column="perm_tag" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+    </resultMap>
+
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -44,6 +51,23 @@
          <where>
              and username = #{username}
          </where>
+    </select>
+
+    <!-- 根据用户账号查询对应的权限   -->
+    <select id="getPermsByUsername" resultMap="SysPermissionMap">
+        SELECT
+            p.id,
+            p.perm_name,
+            p.perm_tag,
+            p.url
+        FROM
+            sys_permission p
+                JOIN sys_role_permission rp ON p.id = rp.perm_id
+                JOIN sys_role r ON rp.role_id = r.id
+                JOIN sys_user_role ur on r.id = ur.role_id
+                JOIN sys_user u on ur.user_id = u.id
+        WHERE
+            u.username = #{username}
     </select>
 
 </mapper>
