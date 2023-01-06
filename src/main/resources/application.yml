@@ -1,0 +1,18 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    encoding: utf-8
+    cache: false
+    suffix: .html
+    servlet:
+      content-type: text/html
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/security?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&autoReconnect=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: yf@123456
+server:
+  port: 8019
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
